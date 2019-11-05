@@ -4,7 +4,7 @@ const path = require('path');
 app = express();
 // console.log(path.join(__dirname, '/dist'));
 app.use(function(req, res, next) {
-    res.setHeader("Content-Security-Policy", "img-src 'self' ");
+    res.setHeader("Content-Security-Policy", "https://manage-employees.herokuapp.com");
     return next();
 });
 app.use(express.static(path.join(__dirname, 'dist')));
