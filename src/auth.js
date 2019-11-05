@@ -1,7 +1,7 @@
 import auth0 from 'auth0-js'
 import Vue from 'vue'
 
-let urlOnline = 'https://manage-employees.herokuapp.com:8080'
+let urlOnline = 'https://manage-employees.herokuapp.com'
 let urloffline = 'http://localhost:8080'
 
 // exchange the object with your own from the setup step above.
@@ -11,7 +11,7 @@ let webAuth = new auth0.WebAuth({
   // make sure this line is contains the port: 8080
   redirectUri: urlOnline+'/callback',
   // we will use the api/v2/ to access the user information as payload
-  // audience: 'https://' + 'your_auth0_domain' + '/api/v2/',
+  // audience: 'https://' + 'dev-softnet.auth0.com/',
   responseType: 'token id_token',
   scope: 'openid' // define the scopes you want to use
 })
@@ -95,6 +95,7 @@ let auth = new Vue({
 
 export default {
   install: function(Vue) {
+    // console.log(options);
     Vue.prototype.$auth = auth
   }
 }
