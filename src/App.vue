@@ -3,7 +3,7 @@
     <nav class="navbar navbar-dark bg-dark">
        <span style="font-size:30px;cursor:pointer; color: white" @click="openNav()">&#9776;</span>
       <a class="navbar-brand" href="#">
-      
+        <img src="https://pbs.twimg.com/media/DSr4Z7PX4AAnDTI.png" width="40" height="40">
       </a>
       <div>
         <button type="button" class="btn btn-outline-secondary btn-sm text-white" @click="$auth.logout()">Logout</button>
