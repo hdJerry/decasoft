@@ -4,7 +4,7 @@ const path = require('path');
 app = express();
 // console.log(path.join(__dirname, '/dist'));
 app.use(function(req, res, next) {
-    res.setHeader("Content-Security-Policy", "script-src 'self' https://analytics.google.com https://dev-softnet.auth0.com https://manage-employees.herokuapp.com");
+    res.setHeader("Content-Security-Policy", "script-src 'self' default-src 'self' img-src 'self' https://analytics.google.com https://dev-softnet.auth0.com https://manage-employees.herokuapp.com");
     return next();
 });
 app.use(express.static(path.join(__dirname, 'dist')));
