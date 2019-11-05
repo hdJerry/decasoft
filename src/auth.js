@@ -2,14 +2,14 @@ import auth0 from 'auth0-js'
 import Vue from 'vue'
 
 let urlOnline = 'https://manage-employees.herokuapp.com:8080'
-let urloffline = 'http://localhost:8070'
+let urloffline = 'http://localhost:8080'
 
 // exchange the object with your own from the setup step above.
 let webAuth = new auth0.WebAuth({
   domain: 'dev-softnet.auth0.com',
   clientID: 'gBtZ9EjrCwi5eRKT1cUUmd12HMI5bpAY',
   // make sure this line is contains the port: 8080
-  redirectUri: urloffline+'/callback',
+  redirectUri: urlOnline+'/callback',
   // we will use the api/v2/ to access the user information as payload
   // audience: 'https://' + 'your_auth0_domain' + '/api/v2/',
   responseType: 'token id_token',
@@ -63,7 +63,7 @@ let auth = new Vue({
         localStorage.removeItem('expires_at')
         localStorage.removeItem('user')
         webAuth.logout({
-          returnTo: urloffline+'/', // Allowed logout URL listed in dashboard
+          returnTo: urlOnline+'/', // Allowed logout URL listed in dashboard
           clientID: 'gBtZ9EjrCwi5eRKT1cUUmd12HMI5bpAY', // Your client ID
         })
       })
