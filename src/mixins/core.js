@@ -25,9 +25,9 @@ export default {
 
          this.from = start - (Number(this.size) - 1);
          this.to = Math.min(end-1, this.datas.length);
-        //  return this.datas.slice(start, end);
+         
         return this.datas.filter(val => {
-            return val.firstname.match(this.search)
+            return val.email.match(this.search)
         }).slice(start, end)
 
       },

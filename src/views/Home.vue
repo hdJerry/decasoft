@@ -55,7 +55,17 @@
           </tr>
         </tbody>
       </table>
+      <div class="d-flex flex-row-reverse"  v-if="paginationData.length != datas.length">
+        <button type="button" class="btn btn-secondary" @click.prevent="prevPage(paginationData.length)" :disabled="currentPage === 0">prev</button>
+        <button type="button" class="btn btn-secondary"  @click.prevent="nextPage(paginationData.length)" :disabled="currentPage >= pageCount -1">next</button>
+      </div>
 
+
+    </div>
+
+    <div class="floatBtn">
+
+      <a href="/employees">+</a>
 
     </div>
 
@@ -123,6 +133,34 @@ export default {
   font-size: 25px;
   color: red;
   cursor : pointer;
+}
+
+.floatBtn{
+  position: absolute;
+  right: 20px;
+  bottom: 60px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #28a745;
+  font-size: 2.0em;
+  text-align:center;
+  transition: all .5s ease-in-out;
+}
+
+.floatBtn a:link{
+
+  text-decoration: none;
+}
+
+.floatBtn:hover{
+  transform: translateY(5px);
+  /* color: #fff!important; */
+}
+.floatBtn a{
+  display: block;
+ transform: translateY(0px);
+ color: #fff;
 }
 
 </style>

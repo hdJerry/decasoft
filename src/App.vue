@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-if="isAuthentic">
     <nav class="navbar navbar-dark bg-dark">
        <span style="font-size:30px;cursor:pointer; color: white" @click="openNav()">&#9776;</span>
       <a class="navbar-brand" href="#">
@@ -25,6 +25,8 @@
     <div class="" id="main">
       <router-view />
 
+      
+
     </div>
   </div>
 </template>
@@ -32,6 +34,14 @@
 <script>
 export default {
   name: 'App',
+  data(){
+    return{
+      isAuthentic : true
+    }
+  },
+  beforeMount(){
+
+  },
   methods: {
     openNav(){
         document.getElementById("mySidenav").style.width = "150px";
@@ -69,7 +79,7 @@ body {
 
 
 .sidenav .routes{
-  padding: 8px 8px 8px 32px;
+  padding: 8px 0px 8px 15px;
   background:
        linear-gradient(
          to right,
