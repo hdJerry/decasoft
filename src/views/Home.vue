@@ -41,7 +41,7 @@
             <th scope="col">LAST NAME</th>
             <th scope="col">EMAIL</th>
             <th scope="col">GENDER</th>
-            <th scope="col">TTOOLool</th>
+            <th scope="col">TOOL</th>
           </tr>
         </thead>
         <tbody>
@@ -51,7 +51,7 @@
             <td>{{emp.lastname}}</td>
             <td>{{emp.email}}</td>
             <td>{{emp.gender}}</td>
-            <td><i class="fa fa-trash-o trash" @click="deleteMe(i)"></i></td>
+            <td><i class="fa fa-trash trash" @click="deleteMe(i)"></i></td>
           </tr>
         </tbody>
       </table>

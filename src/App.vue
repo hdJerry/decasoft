@@ -48,7 +48,7 @@ export default {
 
 <style media="screen">
 
-@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
+/* @import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'); */
 
 body {
   font-family: "Lato", sans-serif;
