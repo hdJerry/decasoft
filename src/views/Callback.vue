@@ -14,7 +14,7 @@ export default {
     this.$auth.handleAuthentication().then((data) => {
 
 
-      this.$router.push({ name: 'home' })
+      // this.$router.push({ name: 'home' })
     })
   }
 }
