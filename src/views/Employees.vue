@@ -28,6 +28,8 @@
          <h2>Get Started</h2>
          <h4>Create and employee only takes a minute.</h4>
 
+         <br>
+
          <div class="form-group">
            <label for="firstname">FIRST NAME</label>
            <input type="text" name="firstname" value="" v-model="firstname" class="form-control details" id="lastname">
@@ -49,8 +51,8 @@
                <option  v-for="(value,i) in genders" :value="value" :key="i">{{value}}</option>
            </select>
          </div>
-         <button class="btn btn-primary btn-block" v-if="!isCreating">Create Employee</button>
-         <button class="btn btn-primary btn-block" type="button" disabled v-else>
+         <button class="btn btn-success btn-block" v-if="!isCreating">Create Employee</button>
+         <button class="btn btn-success btn-block" type="button" disabled v-else>
           <span class="spinner-grow text-primary" role="status" aria-hidden="true"></span>
           Loading...
         </button>
@@ -178,7 +180,9 @@ export default{
 
 <style media="screen">
 
-
+label{
+  font-size: 0.8em;
+}
 
   .form{
     margin : 20px auto;
