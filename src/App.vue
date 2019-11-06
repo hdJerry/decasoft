@@ -1,11 +1,13 @@
 <template>
-  <div id="app" v-if="isAuthentic">
+  <div id="app">
     <nav class="navbar navbar-dark bg-dark">
        <span style="font-size:30px;cursor:pointer; color: white" @click="openNav()">&#9776;</span>
       <a class="navbar-brand" href="#">
         <img src="https://pbs.twimg.com/media/DSr4Z7PX4AAnDTI.png" width="40" height="40">
       </a>
       <div>
+        <!-- <img :src="$auth.user.picture" width="30" height="30">
+        <span class="text-muted font-weight-light px-2">{{$auth.user.name}}</span> -->
         <button type="button" class="btn btn-outline-secondary btn-sm text-white" @click="$auth.logout()">Logout</button>
       </div>
     </nav>
@@ -23,9 +25,9 @@
     </div>
 
     <div class="" id="main">
+
       <router-view />
 
-      
 
     </div>
   </div>
@@ -36,7 +38,7 @@ export default {
   name: 'App',
   data(){
     return{
-      isAuthentic : true
+
     }
   },
   beforeMount(){

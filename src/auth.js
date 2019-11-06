@@ -1,20 +1,31 @@
 import auth0 from 'auth0-js'
+// import Auth0 from '@auth0/auth0-spa-js';
 import Vue from 'vue'
 
 let urlOnline = 'https://manage-employees.herokuapp.com'
 let urloffline = 'http://localhost:8080'
 
+
+
+
 // exchange the object with your own from the setup step above.
 let webAuth = new auth0.WebAuth({
-  domain: 'dev-softnet.auth0.com',
-  clientID: 'gBtZ9EjrCwi5eRKT1cUUmd12HMI5bpAY',
-  // make sure this line is contains the port: 8080
-  redirectUri: urlOnline+'/callback',
-  // we will use the api/v2/ to access the user information as payload
-  // audience: 'https://' + 'dev-softnet.auth0.com/',
-  responseType: 'token id_token',
-  scope: 'openid' // define the scopes you want to use
+  domain: 'dev-crunch.auth0.com',
+  clientID: 'mm3H55EhrYYKLDxiaUEOUDQQVs3RsjkF',
+    // make sure this line is contains the port: 8080
+    redirectUri: 'http://localhost:8080/callback',
+    // we will use the api/v2/ to access the user information as payload
+    // audience: 'https://dev-softnet.auth0.com/api/v2/',
+    responseType: 'id_token token',
+    scope: 'openid name picture' // define the scopes you want to use
 })
+
+
+// webAuth.parseHash((err, res)=>{
+//   console.log(err);
+//   console.log(res);
+// })
+
 
 let auth = new Vue({
   computed: {
@@ -55,6 +66,7 @@ let auth = new Vue({
   methods: {
     login() {
       webAuth.authorize()
+
     },
     logout() {
       return new Promise((resolve, reject) => {
@@ -63,8 +75,8 @@ let auth = new Vue({
         localStorage.removeItem('expires_at')
         localStorage.removeItem('user')
         webAuth.logout({
-          returnTo: urlOnline+'/', // Allowed logout URL listed in dashboard
-          clientID: 'gBtZ9EjrCwi5eRKT1cUUmd12HMI5bpAY', // Your client ID
+          returnTo: 'http://localhost:8080/', // Allowed logout URL listed in dashboard
+          clientID: 'mm3H55EhrYYKLDxiaUEOUDQQVs3RsjkF', // Your client ID
         })
       })
     },
@@ -75,6 +87,8 @@ let auth = new Vue({
       return new Promise((resolve, reject) => {
         webAuth.parseHash((err, authResult) => {
 
+          // console.log(authResult);
+
           if (authResult && authResult.accessToken && authResult.idToken) {
             this.expiresAt = authResult.expiresIn
             this.accessToken = authResult.accessToken
@@ -83,7 +97,10 @@ let auth = new Vue({
             resolve()
 
           } else if (err) {
-            this.logout()
+            // console.log(err);
+
+            localStorage.setItem('err_log', JSON.stringify(err))
+            // this.logout()
             reject(err)
           }
 
@@ -95,7 +112,6 @@ let auth = new Vue({
 
 export default {
   install: function(Vue) {
-    // console.log(options);
     Vue.prototype.$auth = auth
   }
 }

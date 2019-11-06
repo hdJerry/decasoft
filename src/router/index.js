@@ -36,13 +36,16 @@ const router = new VueRouter({
 
 // very basic "setup" of a global guard
 router.beforeEach((to, from, next) => {
-  if(to.name == 'callback') { // check if "to"-route is "callback" and allow access
+  // console.log(to);
+  if(to.name == 'callback'){
     next()
-  } else if (router.app.$auth.isAuthenticated()) { // if authenticated allow access
+  }
+  else if (router.app.$auth.isAuthenticated()) { // if authenticated allow access
     next()
   } else { // trigger auth0 login
     router.app.$auth.login()
   }
 })
+
 
 export default router

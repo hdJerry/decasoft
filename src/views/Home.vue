@@ -97,8 +97,7 @@ export default {
       }else{
 
         this.datas = employees;
-        // console.log("Got  here now oooo");
-        // this.$router.push('/');
+        // console.log("keeeeeerrrrtttt");
       }
     },
   mounted() {
