@@ -13,7 +13,7 @@ let webAuth = new auth0.WebAuth({
   domain: 'dev-crunch.auth0.com',
   clientID: 'mm3H55EhrYYKLDxiaUEOUDQQVs3RsjkF',
     // make sure this line is contains the port: 8080
-    redirectUri: 'https://manage-employees.herokuapp.com/callback',
+    redirectUri: urloffline+'/callback',
     // we will use the api/v2/ to access the user information as payload
     // audience: 'https://dev-softnet.auth0.com/api/v2/',
     responseType: 'id_token token',
@@ -75,7 +75,7 @@ let auth = new Vue({
         localStorage.removeItem('expires_at')
         localStorage.removeItem('user')
         webAuth.logout({
-          returnTo: 'https://manage-employees.herokuapp.com/', // Allowed logout URL listed in dashboard
+          returnTo: urloffline+'/', // Allowed logout URL listed in dashboard
           clientID: 'mm3H55EhrYYKLDxiaUEOUDQQVs3RsjkF', // Your client ID
         })
       })
